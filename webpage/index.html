@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent with Voice Input</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Zendalona AI assistant</h1>
+        </div>
+
+        <div class="logo-container">
+            <img src="/static/images/logo.png" alt="Zendalona Logo" class="logo">
+        </div>        
+
+        <!-- Chat history container -->
+        <div id="chatContainer" class="chat-container"></div>
+
+        <!-- Input area -->
+        <div class="input-area">
+            <form id="userForm">
+                <!-- Voice input button -->
+                <button type="button" id="audioButton" class="audio-button">
+                    🎤
+                </button>
+                <input type="text" id="questionInput" class="message-input" placeholder="Please type your questions" />
+                <button type="submit" class="send-button">submit</button>
+            </form>
+        </div>
+
+        <!-- Recording indicator -->
+        <div id="recordingIndicator" class="recording-indicator" style="display: none;">
+            <div id="recordingIcon" class="recording-icon">
+                <!-- 使用 img 标签加载外部 SVG -->
+                <img src="static\images\record-svgrepo-com.png" alt="Recording"/>
+                <span class="close-icon" id="closeRecording">❌</span>
+                <p>Recording...</p>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="/static/js/scripts.js"></script>
+</body>
+</html>
