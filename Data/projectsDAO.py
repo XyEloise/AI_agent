@@ -1,0 +1,1 @@
+# This file will be used as a basic with embedding and redis for searchProject tools

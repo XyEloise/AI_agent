@@ -1,8 +1,6 @@
 from ollama import chat
-import time
 from conversation.ongoingMessageManager import OngoingMessageManager
 
-# Global session data and locks
 sessions = {}
 locks = {}
 
