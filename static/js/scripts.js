@@ -89,6 +89,12 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             chatContainer.appendChild(aiMessageDiv);
 
+            // 添加语音输出按钮
+            const speakButton = document.createElement('button');
+            speakButton.classList.add('speak-button');
+            speakButton.textContent = '🔊 Speak';
+            aiMessageDiv.appendChild(speakButton);
+
             // Get reference to the answer element
             const currentAnswerElement = document.getElementById(answerId);
 
@@ -97,6 +103,8 @@ document.addEventListener('DOMContentLoaded', function() {
             let retryCount = 0;
             const maxRetries = 3;
             const receivedChunks = [];
+
+            let hasSpoken = false; // 标志变量，确保语音只播放一次
 
             // Polling for streaming data
             const interval = setInterval(function() {
@@ -117,6 +125,12 @@ document.addEventListener('DOMContentLoaded', function() {
                             clearInterval(interval);
                             fullAnswer = receivedChunks.join('');
                             currentAnswerElement.innerText = fullAnswer;
+                            
+                            // 确保语音只播放一次
+                            if (!hasSpoken) {
+                                speakAnswer(fullAnswer);  // 语音输出
+                                hasSpoken = true;
+                            }
                             return;
                         }
                         
@@ -136,6 +150,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     });
             }, 200);  // Set polling interval
+
+            // 语音输出：点击按钮播放语音
+            speakButton.addEventListener('click', function() {
+                speakAnswer(fullAnswer);  // 语音输出
+                hasSpoken = true;  // 设置标志，确保只播放一次
+            });
         })
         .catch(error => {
             console.error('Error:', error);
